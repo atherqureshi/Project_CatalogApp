@@ -1,0 +1,15 @@
+{% include "header.html" %}
+<head>
+</head>
+<body>
+
+	<h2> {{category}}
+
+		<div>
+			<h4> Items </h4>
+			{% for item in items %}
+			<h6>{{item.name}}</h6>
+			{% endfor %}
+		</div>
+
+	</body>

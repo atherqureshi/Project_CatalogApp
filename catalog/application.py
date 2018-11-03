@@ -30,12 +30,14 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
-# Show all restaurants
+# Render homepage
+# Show categories on the left, and latest items in middle
 @app.route('/')
 @app.route('/home/')
 def home():
     categories = session.query(Category).order_by(Category.name)
-    return render_template('home.html', categories=categories)
+    latest_items = session.query(Item).order_by(Item.id)
+    return render_template('home.html', categories=categories, items=latest_items)
 
 
 @app.route('/categories/JSON')
@@ -43,6 +45,14 @@ def home():
 def category_json():
     categories = session.query(Category).all()
     return jsonify(categories=[category.serialize for category in categories])
+
+
+@app.route('/<category>/items')
+@app.route('/<category>')
+def show_category(category):
+	category_id = session.query(Category).filter_by(name=category).one().id
+	items = session.query(Item).filter_by(category_id=category_id).all()
+	return render_template('show_category.html', items=items, category=category)
 
 if __name__ == '__main__':
     app.debug = True

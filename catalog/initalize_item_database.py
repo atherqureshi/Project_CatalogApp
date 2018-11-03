@@ -23,11 +23,14 @@ DBSession = sessionmaker(bind=engine)
 # session.rollback()
 session = DBSession()
 
+print("Truncating tables in Database")
+
 # Clear out data in tables 
 session.execute('''DELETE FROM category''')
 session.execute('''DELETE FROM item''')
 session.commit()
 session.close()
+
 
 # Read JSON File of Data, to edit raw_data, edit them in raw_data folder
 with open('raw_data/categories.json') as f:
@@ -39,8 +42,8 @@ with open('raw_data/categories.json') as f:
 with open('raw_data/items.json') as f:
     item_data = json.load(f)
     for item in item_data:
-        # Grab the category record that the item is attached to
-        category = session.query(Category).filter_by(name=item['category']).one().id
+        # Grab the category record that the item is attached to each item
+        category = session.query(Category).filter_by(name=item['category']).one()
         session.add(Item(name=item['name'],description=item['description'],category=category))
         session.commit()
 

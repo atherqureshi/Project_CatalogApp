@@ -38,10 +38,5 @@
     "name": "harness",
     "description": "the vest that a rock-climber wears to attach himself to safety wire when rock-climbing",
     "category": "rock climbing"
-  },
-  {
-    "name": "skates",
-    "description": "The \"boots\" that a skater wears that have blades on the bottom, that lets the skater glide on the ice",
-    "category": "skating"
   }
 ]

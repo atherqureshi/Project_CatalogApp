@@ -1,47 +1,47 @@
 [
   {
     "name": "soccer ball",
-    "descripton": "Ball that is used for kicking in a game of soccer",
+    "description": "Ball that is used for kicking in a game of soccer",
     "category": "soccer"
   },
   {
     "name": "football",
-    "descripton": "ball that is thrown and passed around in football",
+    "description": "ball that is thrown and passed around in football",
     "category": "football"
   },
   {
     "name": "hockey stick",
-    "descripton": "stick used in hockey to move puck around",
+    "description": "stick used in hockey to move puck around",
     "category": "hockey"
   },
   {
     "name": "disc",
-    "descripton": "disc that is thrown around in frisbee",
+    "description": "disc that is thrown around in frisbee",
     "category": "frisbee"
   },
   {
     "name": "basketball",
-    "descripton": "a thick ball that is bounced, passed and thrown in basketball",
+    "description": "a thick ball that is bounced, passed and thrown in basketball",
     "category": "basketball"
   },
   {
     "name": "baseball",
-    "descripton": "the ball that is caught and hit in the sport of baseball",
+    "description": "the ball that is caught and hit in the sport of baseball",
     "category": "baseball"
   },
   {
     "name": "snowboard",
-    "descripton": "The board that the athlete uses to slide around in the snow in snowboarding",
+    "description": "The board that the athlete uses to slide around in the snow in snowboarding",
     "category": "snowboarding"
   },
   {
     "name": "harness",
-    "descripton": "the vest that a rock-climber wears to attach himself to safety wire when rock-climbing",
+    "description": "the vest that a rock-climber wears to attach himself to safety wire when rock-climbing",
     "category": "rock climbing"
   },
   {
     "name": "skates",
-    "descripton": "The \"boots\" that a skater wears that have blades on the bottom, that lets the skater glide on the ice",
+    "description": "The \"boots\" that a skater wears that have blades on the bottom, that lets the skater glide on the ice",
     "category": "skating"
   }
 ]

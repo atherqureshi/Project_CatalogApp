@@ -39,9 +39,14 @@ def home():
     latest_items = session.query(Item).order_by(Item.id)
     return render_template('home.html', categories=categories, items=latest_items)
 
+# TO DO | Return serialized JSON of joined dataset 
+@app.route('/JSON')
+def json():
+	all_data = session.query(Category,Item).filter(Category.id == Item.category_id)
+	return None
+
 
 @app.route('/categories/JSON')
-@app.route('/JSON')
 def category_json():
     categories = session.query(Category).all()
     return jsonify(categories=[category.serialize for category in categories])
@@ -53,6 +58,14 @@ def show_category(category):
 	category_id = session.query(Category).filter_by(name=category).one().id
 	items = session.query(Item).filter_by(category_id=category_id).all()
 	return render_template('show_category.html', items=items, category=category)
+
+
+@app.route('/catalog/<category>/<item>')
+@app.route('/<category>/<item>')
+def show_item(category, item):
+	item = session.query(Item).filter_by(name=item).one()
+	return render_template('show_item.html', item=item)
+
 
 if __name__ == '__main__':
     app.debug = True

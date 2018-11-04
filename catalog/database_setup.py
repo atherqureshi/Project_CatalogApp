@@ -32,7 +32,7 @@ class Item(Base):
     name = Column(String(250), nullable=False)
     description = Column(String(500), nullable=False)
     category_id = Column(Integer, ForeignKey('category.id'))
-    category = relationship(Category)
+    category = relationship(Category, backref='items')
 
     @property
     def serialize(self):

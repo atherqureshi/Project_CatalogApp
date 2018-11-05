@@ -39,6 +39,7 @@ def home():
     latest_items = session.query(Item).order_by(Item.id)
     return render_template('home.html', categories=categories, items=latest_items)
 
+
 # TO DO | Return serialized JSON of joined dataset 
 @app.route('/JSON')
 def json():
@@ -48,8 +49,8 @@ def json():
 
 @app.route('/categories/JSON')
 def category_json():
-    categories = session.query(Category).all()
-    return jsonify(categories=[category.serialize for category in categories])
+    categories = session.query(Category)
+    return jsonify(categories=[category.serialize for category in categories.all()])
 
 
 @app.route('/<category>/items')

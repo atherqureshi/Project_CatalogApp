@@ -19,8 +19,8 @@ class Category(Base):
     def serialize(self):
         """Return object data in easily serializeable format"""
         return {
-            'id': self.name,
-            'name': self.id,
+            'id': self.id,
+            'name': self.name,
             'description': self.description
         }
 
@@ -43,6 +43,11 @@ class Item(Base):
             'description': self.description,
             'category_id': self.category_id
         }
+
+
+# Takes a Serialzlied Query object and returns a JSON string
+def serialize_query_json(query):
+    return [u.__dict__ for u in query]
 
 
 engine = create_engine('sqlite:///catalog.db')

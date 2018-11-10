@@ -29,7 +29,7 @@ body {
 
 .grid-container {
 	display: grid;
-	grid-template-columns: 20% 1fr;
+	grid-template-columns: 15% 1fr;
 	grid-template-rows: 1fr;
 	grid-template-areas: "Sidebar Data-Panel";
 	border: solid;

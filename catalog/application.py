@@ -40,7 +40,7 @@ def home():
     return render_template('home.html', categories=categories, items=latest_items)
 
 
-# TO DO | Return serialized JSON of joined dataset 
+# TO DO | Return serialized JSON of joined dataset (all categories + items within them)
 @app.route('/JSON')
 def json():
 	all_data = session.query(Category,Item).filter(Category.id == Item.category_id)
@@ -67,6 +67,9 @@ def show_item(category, item):
 	item = session.query(Item).filter_by(name=item).one()
 	return render_template('show_item.html', item=item)
 
+
+def login():
+	return ""
 
 if __name__ == '__main__':
     app.debug = True

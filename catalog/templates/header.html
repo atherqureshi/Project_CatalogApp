@@ -1,11 +1,10 @@
-<div class="row top-menu">
-	<div class="col-md-6">
-		<h2> Catalog Application </h2>
-		<a href="{{url_for('home')}}">
-			<span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home
-		</a>
-	</div>
-	<div class="col-md-6 text-right">
-		<a href = '{{url_for('home')}}'> Login </a>
-	</div>
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<div class="topnav">
+	<h2> Catalog </h2>
+	<a class="active" href="{{url_for('home')}}"><button class="button">Home</button></a>
+	<a href="{{url_for('json')}}" >	<button class="button">Login</button></a>
 </div>
+

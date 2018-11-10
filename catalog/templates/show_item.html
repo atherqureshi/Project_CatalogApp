@@ -1,12 +1,14 @@
 {% include "header.html" %}
-<head>
-</head>
 <body>
 
-	<h2> {{item.name}}
-
-		<div>
-			{{item.description}}
+	<div class="center-div">
+		<div class="description-container">
+			<h2> {{(item.name).title()}}
+				<p>
+					{{item.description}}
+				</p>
+			</h2>
 		</div>
+	</div>
 
-	</body>
+</body>

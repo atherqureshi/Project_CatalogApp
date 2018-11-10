@@ -8,6 +8,12 @@ body {
 	margin: 0px;
 }
 
+.description-container {
+	border: solid;
+	background-color: #DAAD86;
+	padding-left: 15px;
+}
+
 .topnav {
 	background-color: #BC986A;
 	border-bottom: solid;

@@ -38,5 +38,10 @@
     "name": "harness",
     "description": "the vest that a rock-climber wears to attach himself to safety wire when rock-climbing",
     "category": "rock climbing"
+  },
+  {
+    "name": "cleats",
+    "description": "worn to increase traction and precision",
+    "category": "soccer"
   }
 ]

@@ -3,7 +3,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from database_setup import Base, Category, Item
+from database_setup import Base, Category, Item, User
 
 # Raw Data is loading from JSON
 import json 
@@ -33,6 +33,11 @@ if __name__ == '__main__':
     session.commit()
     session.close()
 
+    # Create dummy user
+    User1 = User(name="Robo Barista", email="tinnyTim@udacity.com",
+                 picture='https://pbs.twimg.com/profile_images/2671170543/18debd694829ed78203a5a36dd364160_400x400.png')
+    session.add(User1)
+    session.commit()
 
     # Read JSON File of Data, to edit raw_data, edit them in raw_data folder
     with open('raw_data/categories.json') as f:
@@ -46,7 +51,7 @@ if __name__ == '__main__':
         for item in item_data:
             # Grab the category record that the item is attached to each item
             category = session.query(Category).filter_by(name=item['category']).one()
-            session.add(Item(name=item['name'],description=item['description'],category=category))
+            session.add(Item(name=item['name'],description=item['description'],category=category, user=User1))
             session.commit()
 
     print("Loaded Item Catalog Data into DB")

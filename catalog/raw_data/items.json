@@ -6,27 +6,27 @@
   },
   {
     "name": "football",
-    "description": "ball that is thrown and passed around in football",
+    "description": "Ball that is thrown and passed around in football",
     "category": "football"
   },
   {
     "name": "hockey stick",
-    "description": "stick used in hockey to move puck around",
+    "description": "Stick used in hockey to move puck around",
     "category": "hockey"
   },
   {
     "name": "disc",
-    "description": "disc that is thrown around in frisbee",
+    "description": "Disc that is thrown around in frisbee",
     "category": "frisbee"
   },
   {
     "name": "basketball",
-    "description": "a thick ball that is bounced, passed and thrown in basketball",
+    "description": "A thick ball that is bounced, passed and thrown in basketball",
     "category": "basketball"
   },
   {
     "name": "baseball",
-    "description": "the ball that is caught and hit in the sport of baseball",
+    "description": "The ball that is caught and hit in the sport of baseball",
     "category": "baseball"
   },
   {
@@ -36,12 +36,12 @@
   },
   {
     "name": "harness",
-    "description": "the vest that a rock-climber wears to attach himself to safety wire when rock-climbing",
+    "description": "The vest that a rock-climber wears to attach himself to safety wire when rock-climbing",
     "category": "rock climbing"
   },
   {
     "name": "cleats",
-    "description": "worn to increase traction and precision",
+    "description": "Worn to increase traction and precision",
     "category": "soccer"
   }
 ]

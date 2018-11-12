@@ -1,7 +1,7 @@
 [
   {
     "name": "soccer",
-    "description": "a game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms\n"
+    "description": "A game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms\n"
   },
   {
     "name": "basketball",
@@ -13,11 +13,11 @@
   },
   {
     "name": "frisbee",
-    "description": "a game played on a rectangular field between two seven-player teams in which a plastic disc is advanced by being thrown from player to player and in which a team scores by catching a throw in the opponent's end zone. — called also Ultimate"
+    "description": "A game played on a rectangular field between two seven-player teams in which a plastic disc is advanced by being thrown from player to player and in which a team scores by catching a throw in the opponent's end zone. — called also Ultimate"
   },
   {
     "name": "snowboarding",
-    "description": "a winter sport that involves descending a slope that is covered with snow while standing on a board attached to a rider's feet, using a special boot set onto a mounted binding"
+    "description": "A winter sport that involves descending a slope that is covered with snow while standing on a board attached to a rider's feet, using a special boot set onto a mounted binding"
   },
   {
     "name": "rock climbing",
@@ -25,7 +25,7 @@
   },
   {
     "name": "football",
-    "description": "is a team sport played by two teams of eleven players on a rectangular field with goalposts at each end. The offense, which is the team controlling the oval-shaped football, attempts to advance down the field by running with or passing the ball, while the defense, which is the team without control of the ball, aims to stop the offense's advance and aims to take control of the ball for themselves"
+    "description": "A team sport played by two teams of eleven players on a rectangular field with goalposts at each end. The offense, which is the team controlling the oval-shaped football, attempts to advance down the field by running with or passing the ball, while the defense, which is the team without control of the ball, aims to stop the offense's advance and aims to take control of the ball for themselves"
   },
   {
     "name": "hockey",

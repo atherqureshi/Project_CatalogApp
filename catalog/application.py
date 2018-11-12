@@ -56,6 +56,7 @@ def category_json():
 @app.route('/catalog/<category>')
 @app.route('/<category>')
 def show_category(category):
+	# Get the ID for the category entered, to grab the appropriate items per each category
 	category_id = (session.query(Category).filter_by(name=category).one()).id
 	items = session.query(Item).filter_by(category_id=category_id).all()
 	cat_list = session.query(Category).order_by(Category.name)

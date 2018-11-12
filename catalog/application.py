@@ -20,6 +20,7 @@ import requests
 
 app = Flask(__name__)
 
+
 CLIENT_ID = json.loads(
     open('client_secrets.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Catalog Application"
@@ -33,9 +34,10 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
+
 # Create anti-forgery state token
 @app.route('/login')
-def showLogin():
+def show_login():
     state = ''.join(random.choice(string.ascii_uppercase + string.digits)
                     for x in xrange(32))
     login_session['state'] = state
@@ -214,7 +216,6 @@ def category_json():
 
 
 @app.route('/catalog/<category>')
-@app.route('/<category>')
 def show_category(category):
 	# Get the ID for the category entered, to grab the appropriate items per each category
 	category_id = (session.query(Category).filter_by(name=category).one()).id
@@ -229,10 +230,7 @@ def show_item(category, item):
 	item = session.query(Item).filter_by(name=item).one()
 	return render_template('show_item.html', item=item)
 
-
-def login():
-	return ""
-
 if __name__ == '__main__':
+    app.secret_key = 'super_secret_key'
     app.debug = True
     app.run(host='0.0.0.0', port=5000)

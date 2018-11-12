@@ -13,7 +13,7 @@
 		  	<div class="Data-Panel">
 				<h3> Latest Items </h3>
 				{% for item in items %}
-				<a href="/catalog/{{item.category}}/{{item.name}}"><h6>{{(item.name).title()}}</h6></a>
+				<a href="/catalog/{{(item.category).name}}/{{item.name}}"><h6>{{(item.name).title()}}</h6></a>
 				{% endfor %}
 			</div>
 		</div>

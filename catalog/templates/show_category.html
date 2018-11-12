@@ -1,15 +1,24 @@
 {% include "header.html" %}
-<head>
-</head>
 <body>
 
-	<h2> {{category}}
+	<div class="center-div">
+		<div class="grid-container">
+			<div class="Sidebar">
+		  		<h3> Categories </h3>
+				{% for category in all_categories %}
+				<a href="/catalog/{{category.name}}"><h6>{{(category.name).title()}}</h6></a>
+				{% endfor %}
+			</div>
 
-		<div>
-			<h4> Items </h4>
-			{% for item in items %}
-			<h6>{{item.name}}</h6>
-			{% endfor %}
+		  	<div class="Data-Panel">
+				<h3> Items in {{category.title()}} </h3>
+				{% for item in items %}
+				<a href="/catalog/{{(item.category).name}}/{{item.name}}"><h6>{{(item.name).title()}}</h6></a>
+				{% endfor %}
+			</div>
 		</div>
+	</div>
 
-	</body>
+<footer style="padding-left: 15px">
+	Ather Qureshi
+</footer>

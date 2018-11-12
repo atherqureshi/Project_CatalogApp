@@ -53,12 +53,13 @@ def category_json():
     return jsonify(categories=[category.serialize for category in categories.all()])
 
 
-@app.route('/<category>/items')
+@app.route('/catalog/<category>')
 @app.route('/<category>')
 def show_category(category):
-	category_id = session.query(Category).filter_by(name=category).one().id
+	category_id = (session.query(Category).filter_by(name=category).one()).id
 	items = session.query(Item).filter_by(category_id=category_id).all()
-	return render_template('show_category.html', items=items, category=category)
+	cat_list = session.query(Category).order_by(Category.name)
+	return render_template('show_category.html', items=items, category=category, all_categories=cat_list)
 
 
 @app.route('/catalog/<category>/<item>')

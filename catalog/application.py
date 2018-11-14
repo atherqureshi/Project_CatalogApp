@@ -69,6 +69,7 @@ def gconnect():
     url = ('https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=%s'
            % access_token)
     h = httplib2.Http()
+    print(h.request(url, 'GET')[1])
     result = json.loads(h.request(url, 'GET')[1])
     # If there was an error in the access token info, abort.
     if result.get('error') is not None:
@@ -195,7 +196,7 @@ def home():
 @app.route('/JSON')
 def json():
 	all_data = session.query(Category,Item).filter(Category.id == Item.category_id)
-	return None
+	return ""
 
 
 @app.route('/categories/JSON')

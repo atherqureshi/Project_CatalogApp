@@ -55,10 +55,5 @@ class Item(Base):
         }
 
 
-# Takes a Serialzlied Query object and returns a JSON string
-def serialize_query_json(query):
-    return [u.__dict__ for u in query]
-
-
 engine = create_engine('sqlite:///catalog.db')
 Base.metadata.create_all(engine)

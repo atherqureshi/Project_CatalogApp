@@ -192,9 +192,8 @@ def home():
     return render_template('home.html', categories=categories, items=latest_items)
 
 
-# TO DO | Return serialized JSON of joined dataset (all categories + items within them)
 @app.route('/JSON')
-def json():
+def all_json():
 	all_data = session.query(Category)
 	return jsonify(categories=[category.serialize for category in all_data.all()])
 

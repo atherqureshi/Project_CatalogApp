@@ -25,6 +25,7 @@
 			</div>
 
 			<div class="Data-Panel">
+				<a href={{url_for('add_item')}}> Add New item </a>
 				<h3> Latest Items </h3>
 				{% for item in items %}
 				<a href="/catalog/{{(item.category).name}}/{{item.name}}"><h6>{{(item.name).title()}}</h6></a>

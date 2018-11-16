@@ -221,7 +221,6 @@ def show_item(category, item):
 def add_item():
     if request.method == 'POST':
         cat_id = session.query(Category).filter_by(name=request.form['category']).one().id
-        print(cat_id)
         new_item = Item(name=request.form['name'], 
             description=request.form['description'], 
             user_id=login_session['username'],
@@ -229,7 +228,6 @@ def add_item():
         session.add(new_item)
         session.commit()
         return redirect(url_for('home'))
-        # Take stuff from form and make new item
     else:
         category_names = [category.name for category in session.query(Category).all()]
         return render_template('add_form_item.html', cat_list=category_names)

@@ -195,8 +195,8 @@ def home():
 # TO DO | Return serialized JSON of joined dataset (all categories + items within them)
 @app.route('/JSON')
 def json():
-	all_data = session.query(Category,Item).filter(Category.id == Item.category_id)
-	return ""
+	all_data = session.query(Category)
+	return jsonify(categories=[category.serialize for category in all_data.all()])
 
 
 @app.route('/categories/JSON')

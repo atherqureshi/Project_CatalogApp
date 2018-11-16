@@ -11,7 +11,7 @@ body {
 .description-container {
 	border: solid;
 	background-color: #DAAD86;
-	padding-left: 15px;
+	padding: 15px;
 }
 
 .topnav {

@@ -186,7 +186,8 @@ def gdisconnect():
 # Render homepage
 # Show categories on the left, and latest items in middle
 @app.route('/')
-@app.route('/home/')
+@app.route('/home')
+@app.route('/catalog')
 def home():
     categories = session.query(Category).order_by(Category.name)
     latest_items = session.query(Item).order_by(Item.id)
@@ -226,6 +227,26 @@ def delete_item(item_name, category_name):
         return redirect(url_for('home'))
     else:
         return render_template('delete_confirm_item.html', item=item_to_delete, category_name=category_name)
+
+
+@app.route('/catalog/<category_name>/<item_name>/edit',
+           methods=['GET', 'POST'])
+def edit_item(item_name, category_name):
+    item_to_edit = session.query(Item).filter_by(name=item_name).one()
+    category_names = [category.name for category in session.query(Category).all()]
+    if request.method == 'POST':
+        if request.form['name']:
+            item_to_edit.name = request.form['name']
+        if request.form['description']:
+            item_to_edit.description = request.form['description']
+        if request.form['category']:
+            new_cat_id = session.query(Category).filter_by(name=request.form['category']).one().id
+            item_to_edit.category_id = new_cat_id
+        session.add(item_to_edit)
+        session.commit()
+        return redirect(url_for('home'))
+    else:
+        return render_template('edit_form_item.html', item=item_to_edit, category_name=category_name, cat_list=category_names)
 
 
 if __name__ == '__main__':

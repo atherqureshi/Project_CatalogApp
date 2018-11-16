@@ -199,12 +199,6 @@ def all_json():
 	return jsonify(categories=[category.serialize for category in all_data.all()])
 
 
-@app.route('/categories/JSON')
-def category_json():
-    categories = session.query(Category)
-    return jsonify(categories=[category.serialize for category in categories.all()])
-
-
 @app.route('/catalog/<category>')
 def show_category(category):
 	# Get the ID for the category entered, to grab the appropriate items per each category

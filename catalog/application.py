@@ -99,6 +99,7 @@ def gconnect():
         response = make_response(json.dumps('Current user is already connected.'),
                                  200)
         response.headers['Content-Type'] = 'application/json'
+        flash("You are logged in as %s" % login_session['username'] )
         return response
 
     # Store the access token in the session for later use.
@@ -123,7 +124,7 @@ def gconnect():
     output += '<img src="'
     output += login_session['picture']
     output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
-    flash("you are now logged in as %s" % login_session['username'])
+    flash("You are now logged in as %s" % login_session['username'])
     print "done!"
     return output
 
@@ -218,6 +219,7 @@ def show_category(category):
 def show_item(category, item):
 	item = session.query(Item).filter_by(name=item).one()
 	return render_template('show_item.html', item=item)
+
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'

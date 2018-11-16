@@ -1,34 +1,19 @@
 [
   {
-    "name": "soccer",
-    "description": "A game played on a field between two teams of 11 players each with the object to propel a round ball into the opponent's goal by kicking or by hitting it with any part of the body except the hands and arms\n"
-  },
+    "name": "soccer"},
   {
-    "name": "basketball",
-    "description": "Basketball is a team sport. Two teams of five players each try to score by shooting a ball through a hoop elevated 10 feet above the ground. The game is played on a rectangular floor called the court, and there is a hoop at each end. The court is divided into two main sections by the mid-court line"
-  },
+    "name": "basketball"},
   {
-    "name": "baseball",
-    "description": "Baseball is a bat-and-ball game played between two opposing teams who take turns batting and fielding. The game proceeds when a player on the fielding team, called the pitcher, throws a ball which a player on the batting team tries to hit with a bat"
-  },
+    "name": "baseball"},
   {
-    "name": "frisbee",
-    "description": "A game played on a rectangular field between two seven-player teams in which a plastic disc is advanced by being thrown from player to player and in which a team scores by catching a throw in the opponent's end zone. — called also Ultimate"
-  },
+    "name": "frisbee"},
   {
-    "name": "snowboarding",
-    "description": "A winter sport that involves descending a slope that is covered with snow while standing on a board attached to a rider's feet, using a special boot set onto a mounted binding"
-  },
+    "name": "snowboarding"},
   {
-    "name": "rock climbing",
-    "description": "Rock climbing is an activity in which participants climb up, down or across natural rock formations or artificial rock walls. The goal is to reach the summit of a formation or the endpoint of a usually pre-defined route without falling"
-  },
+    "name": "rock climbing"},
   {
-    "name": "football",
-    "description": "A team sport played by two teams of eleven players on a rectangular field with goalposts at each end. The offense, which is the team controlling the oval-shaped football, attempts to advance down the field by running with or passing the ball, while the defense, which is the team without control of the ball, aims to stop the offense's advance and aims to take control of the ball for themselves"
-  },
+    "name": "football"},
   {
-    "name": "hockey",
-    "description": "Hockey is a sport in which two teams play against each other by trying to manoeuvre a ball or a puck into the opponent's goal using a hockey stick"
+    "name": "hockey"
   }
 ]

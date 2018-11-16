@@ -43,7 +43,7 @@ if __name__ == '__main__':
     with open('raw_data/categories.json') as f:
         category_data = json.load(f)
         for category in category_data:
-            session.add(Category(name=category['name'], description=category['description']))
+            session.add(Category(name=category['name']))
             session.commit()
 
     with open('raw_data/items.json') as f:

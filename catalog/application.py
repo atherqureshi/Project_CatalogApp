@@ -219,6 +219,9 @@ def show_item(category, item):
 
 @app.route('/catalog/add_item', methods=['GET', 'POST'])
 def add_item():
+    if 'username' not in login_session:
+        flash('You must be logged in to view add item!')
+        return redirect('/home')
     if request.method == 'POST':
         cat_id = session.query(Category).filter_by(name=request.form['category']).one().id
         new_item = Item(name=request.form['name'], 
@@ -236,6 +239,9 @@ def add_item():
 @app.route('/catalog/<category_name>/<item_name>/delete',
            methods=['GET', 'POST'])
 def delete_item(item_name, category_name):
+    if 'username' not in login_session:
+        flash('You must be logged in to delete an item!')
+        return redirect('/home')
     item_to_delete = session.query(Item).filter_by(name=item_name).one()
     if request.method == 'POST':
         session.delete(item_to_delete)
@@ -248,6 +254,9 @@ def delete_item(item_name, category_name):
 @app.route('/catalog/<category_name>/<item_name>/edit',
            methods=['GET', 'POST'])
 def edit_item(item_name, category_name):
+    if 'username' not in login_session:
+        flash('You must be logged in to edit an item!')
+        return redirect('/home')
     item_to_edit = session.query(Item).filter_by(name=item_name).one()
     category_names = [category.name for category in session.query(Category).all()]
     if request.method == 'POST':

@@ -194,6 +194,7 @@ def home():
 
 
 @app.route('/JSON')
+@app.route('/categories/JSON')
 def all_json():
 	all_data = session.query(Category)
 	return jsonify(categories=[category.serialize for category in all_data.all()])

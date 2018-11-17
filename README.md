@@ -40,3 +40,4 @@ the Vagrantfile is)
 - The backend is sqlite, the database is mapped to ORM using SQLAlchemy
 - Flask is the webserver framework
 - It follows the PEP8 style guide.
+- All raw_data for playing around is in raw_data folder in JSON form

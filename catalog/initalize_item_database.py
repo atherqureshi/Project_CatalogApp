@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Category, Item, User
 
 # Raw Data is loading from JSON
-import json 
+import json
 
 
 if __name__ == '__main__':
@@ -27,15 +27,17 @@ if __name__ == '__main__':
 
     print("Truncating tables in Database")
 
-    # Clear out data in tables 
+    # Clear out data in tables
     session.execute('''DELETE FROM category''')
     session.execute('''DELETE FROM item''')
     session.commit()
     session.close()
 
     # Create dummy user
-    User1 = User(name="Robo Barista", email="tinnyTim@udacity.com",
-                 picture='https://pbs.twimg.com/profile_images/2671170543/18debd694829ed78203a5a36dd364160_400x400.png')
+    User1 = User(name="Robo Barista",
+                 email="tinnyTim@udacity.com",
+                 picture='https://pbs.twimg.com/profile_images/2671170543/'
+                 '18debd694829ed78203a5a36dd364160_400x400.png')
     session.add(User1)
     session.commit()
 
@@ -50,8 +52,12 @@ if __name__ == '__main__':
         item_data = json.load(f)
         for item in item_data:
             # Grab the category record that the item is attached to each item
-            category = session.query(Category).filter_by(name=item['category']).one()
-            session.add(Item(name=item['name'],description=item['description'],category=category, user=User1))
+            category = session.query(Category) \
+                .filter_by(name=item['category']).one()
+            session.add(Item(name=item['name'],
+                             description=item['description'],
+                             category=category,
+                             user=User1))
             session.commit()
 
     print("Loaded Item Catalog Data into DB")

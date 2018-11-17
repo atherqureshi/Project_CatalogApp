@@ -264,7 +264,7 @@ def add_item():
         flash("Added New Item: {}".format(new_item.name))
         return redirect(url_for('home'))
     else:
-        # Serve add item form to client 
+        # Serve add item form to client
         cat_names = [cat.name for cat in session.query(Category).all()]
         return render_template('add_form_item.html', cat_list=cat_names)
 
@@ -294,7 +294,7 @@ def delete_item(item_name, category_name):
         flash("Deleted Item: {}".format(item_to_delete.name))
         return redirect(url_for('home'))
     else:
-        # Serve delete confirmation form to client 
+        # Serve delete confirmation form to client
         return render_template('delete_confirm_item.html',
                                item=item_to_delete,
                                category_name=category_name)
@@ -335,7 +335,7 @@ def edit_item(item_name, category_name):
         session.commit()
         flash("Edited Item: {}".format(item_to_edit.name))
         return redirect(url_for('home'))
-    # Serve edit form to client 
+    # Serve edit form to client
     else:
         cat_names = [cat.name for cat in session.query(Category).all()]
         return render_template('edit_form_item.html',

@@ -116,6 +116,11 @@ def gconnect():
     login_session['username'] = data['name']
     login_session['picture'] = data['picture']
     login_session['email'] = data['email']
+    user_id = getUserID(data['email'])
+    if not user_id:
+        added_user_id = createUser(login_session)
+        login_session['user_id'] = added_user_id
+    login_session['user_id'] = added_user_id
 
     output = ''
     output += '<h1>Welcome, '
@@ -264,7 +269,7 @@ def add_item():
             .id
         new_item = Item(name=request.form['name'],
                         description=request.form['description'],
-                        user_id=login_session['username'],
+                        user_id=login_session['user_id'],
                         category_id=cat_id)
         session.add(new_item)
         session.commit()
@@ -288,10 +293,10 @@ def delete_item(item_name, category_name):
         flash('You must be logged in to delete an item!')
         return redirect('/home')
     item_to_delete = session.query(Item).filter_by(name=item_name).one()
-    item_username = session.query(User).filter_by(id=item_to_delete.user_id) \
+    item_user_id = session.query(User).filter_by(id=item_to_delete.user_id) \
         .one() \
-        .name
-    if login_session['username'] != item_username:
+        .id
+    if login_session['user_id'] != item_user_id:
         flash("You do not have permission to delete: {}"
               .format(item_to_delete.name))
         return redirect('/home')
@@ -321,10 +326,10 @@ def edit_item(item_name, category_name):
         return redirect('/home')
     item_to_edit = session.query(Item).filter_by(name=item_name).one()
     # Verify if logged in user can edit item
-    item_username = session.query(User).filter_by(id=item_to_edit.user_id) \
+    item_user_id = session.query(User).filter_by(id=item_to_edit.user_id) \
         .one() \
-        .name
-    if login_session['username'] != item_username:
+        .id
+    if login_session['user_id'] != item_user_id:
         flash("You do not have permission to edit: {}"
               .format(item_to_edit.name))
         return redirect('/home')

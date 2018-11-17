@@ -1,8 +1,13 @@
 ## Item Catalog Readme ##
 
+![Front-End Photo](frontend_demo.png)
+
 - This is a flask application that will start a webserver
 serving at Localhost:5000
-- All 
+- Data is persisted in a SqLite database hosted on the local machine
+- Users can login via OAuth2.0 using Google Api, and perform CRUD operations
+via the frontend being delivered by flask. 
+
 
 ## Dependencies ##
 
@@ -15,19 +20,23 @@ serving at Localhost:5000
 	- Install for your operating system
 	- Windows users: The Installer may ask you to grant network permissions to Vagrant or make a firewall exception. Be sure to allow this.
 
-## How to Execute ##
 
-1. Via Command Line, traverse to the vagrant configuation directory
-2. Execute 'Vagrant up'
+## How to Start Application ##
+
+1. Via Command Line, traverse to the root directory of this git repo (where
+the Vagrantfile is)
+2. Execute 'vagrant up'
 	- Wait till execution finishes, and you are given the terminal again
-3. Execute 'Vagrant ssh'
-4. Now you are in the virutal machine, type psql to access the PostGreSQL command interface
-5. Type 'createdb news' to initialize the news database
-6. Exit the PostGresSQL command line by typing '\q' and return
-7. Execute 'python report.py' and results of the report will print in the terminal
+3. Execute 'vagrant ssh' (This will SSH you into the VM)
+4. In SSH, execute 'cd ../../vagrant/catalog'
+5. Run 'python database_setup.py'
+6. Run 'python initalize_item_database.py'
+7. Run 'python application.py'
+8. Visit localhost:5000 on a web browser on same machine to visit Item Catalog
 
 
 ## Design ##
 
-- The program is sending queries to the local postgres database sitting in a virutal machine, and printing out the results to the standard output. 
+- The backend is sqlite, the database is mapped to ORM using SQLAlchemy
+- Flask is the webserver framework
 - It follows the PEP8 style guide.

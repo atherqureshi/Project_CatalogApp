@@ -31,7 +31,6 @@ APPLICATION_NAME = "Catalog Application"
 engine = create_engine('sqlite:///catalog.db')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
-session = DBSession()
 
 
 @app.route('/login')
@@ -134,6 +133,7 @@ def gconnect():
 
 
 def createUser(login_session):
+    session = DBSession()
     newUser = User(name=login_session['username'], email=login_session[
                    'email'], picture=login_session['picture'])
     session.add(newUser)
@@ -143,10 +143,12 @@ def createUser(login_session):
 
 
 def getUserInfo(user_id):
+    session = DBSession()
     return session.query(User).filter_by(id=user_id).one()
 
 
 def getUserID(email):
+    session = DBSession()
     try:
         user = session.query(User).filter_by(email=email).one()
         return user.id
@@ -197,6 +199,7 @@ def home():
     """
         Home page of application
     """
+    session = DBSession()
     categories = session.query(Category).order_by(Category.name)
     # Pass to template, 10 items most recent items
     latest_items = session.query(Item).order_by(Item.id)[0:10]
@@ -211,6 +214,7 @@ def all_json():
     """
         Returns JSON of all category database fields
     """
+    session = DBSession()
     all_data = session.query(Category)
     return jsonify(categories=[cat.serialize for cat in all_data.all()])
 
@@ -220,6 +224,7 @@ def show_category(category):
     """
         Generate page for a single category
     """
+    session = DBSession()
     category_id = (session.query(Category).filter_by(name=category).one()).id
     items = session.query(Item).filter_by(category_id=category_id).all()
     # To generate side bar of categories
@@ -236,6 +241,7 @@ def show_item(category, item):
     """
         Generate page for a single item
     """
+    session = DBSession()
     item = session.query(Item).filter_by(name=item).one()
     return render_template('show_item.html', item=item, category=item.category)
 
@@ -246,6 +252,7 @@ def add_item():
         On call, sends a post form to client to be able to add
         new item to catalog
     """
+    session = DBSession()
     if 'username' not in login_session:
         flash('You must be logged in to view add item!')
         return redirect('/home')
@@ -276,6 +283,7 @@ def delete_item(item_name, category_name):
         Given an Item name and Category name, it sends a form to
         client to complete a POST Request to confirm Item deletion
     """
+    session = DBSession()
     if 'username' not in login_session:
         flash('You must be logged in to delete an item!')
         return redirect('/home')
@@ -307,6 +315,7 @@ def edit_item(item_name, category_name):
         Given an Item name and Category name, it sends a form to
         client to complete a POST Request to change Item data
     """
+    session = DBSession()
     if 'username' not in login_session:
         flash('You must be logged in to edit an item!')
         return redirect('/home')
@@ -346,5 +355,5 @@ def edit_item(item_name, category_name):
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
-    app.debug = True
+    app.debug = False
     app.run(host='0.0.0.0', port=5000)

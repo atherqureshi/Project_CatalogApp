@@ -1,6 +1,6 @@
 ## Item Catalog Readme ##
 
-![Front-End Photo](frontend_demo.png)
+![Front-End Photo](frontend_demo.PNG)
 
 - This is a flask application that will start a webserver
 serving at Localhost:5000

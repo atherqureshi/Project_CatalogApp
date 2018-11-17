@@ -249,6 +249,7 @@ def add_item():
     if 'username' not in login_session:
         flash('You must be logged in to view add item!')
         return redirect('/home')
+    # Process form from client to add item
     if request.method == 'POST':
         cat_id = session.query(Category) \
             .filter_by(name=request.form['category']) \
@@ -263,6 +264,7 @@ def add_item():
         flash("Added New Item: {}".format(new_item.name))
         return redirect(url_for('home'))
     else:
+        # Serve add item form to client 
         cat_names = [cat.name for cat in session.query(Category).all()]
         return render_template('add_form_item.html', cat_list=cat_names)
 
@@ -285,12 +287,14 @@ def delete_item(item_name, category_name):
         flash("You do not have permission to delete: {}"
               .format(item_to_delete.name))
         return redirect('/home')
+    # Process form from client to delete item
     if request.method == 'POST':
         session.delete(item_to_delete)
         session.commit()
         flash("Deleted Item: {}".format(item_to_delete.name))
         return redirect(url_for('home'))
     else:
+        # Serve delete confirmation form to client 
         return render_template('delete_confirm_item.html',
                                item=item_to_delete,
                                category_name=category_name)
@@ -307,6 +311,7 @@ def edit_item(item_name, category_name):
         flash('You must be logged in to edit an item!')
         return redirect('/home')
     item_to_edit = session.query(Item).filter_by(name=item_name).one()
+    # Verify if logged in user can edit item
     item_username = session.query(User).filter_by(id=item_to_edit.user_id) \
         .one() \
         .name
@@ -314,7 +319,7 @@ def edit_item(item_name, category_name):
         flash("You do not have permission to edit: {}"
               .format(item_to_edit.name))
         return redirect('/home')
-    cat_names = [category.name for category in session.query(Category).all()]
+    # Process form from client to update item
     if request.method == 'POST':
         if request.form['name']:
             item_to_edit.name = request.form['name']
@@ -330,7 +335,9 @@ def edit_item(item_name, category_name):
         session.commit()
         flash("Edited Item: {}".format(item_to_edit.name))
         return redirect(url_for('home'))
+    # Serve edit form to client 
     else:
+        cat_names = [cat.name for cat in session.query(Category).all()]
         return render_template('edit_form_item.html',
                                item=item_to_edit,
                                category_name=category_name,

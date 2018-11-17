@@ -151,7 +151,6 @@ def getUserID(email):
         user = session.query(User).filter_by(email=email).one()
         return user.id
     except Exception:
-        raise
         return None
 
 
@@ -184,7 +183,7 @@ def gdisconnect():
         return response
     else:
         error_string = "Failed to revoke token for given user."
-        response = make_response(json.dumps(error_string, 400))
+        response = make_response(json.dumps(error_string), 400)
         response.headers['Content-Type'] = "application/json"
         return response
 

@@ -25,11 +25,12 @@ if __name__ == '__main__':
     # session.rollback()
     session = DBSession()
 
-    print("Truncating tables in Database")
+    print("Truncating tables in Database (Category, Item, and User)")
 
     # Clear out data in tables
     session.execute('''DELETE FROM category''')
     session.execute('''DELETE FROM item''')
+    session.execute('''DELETE FROM user''')
     session.commit()
     session.close()
 

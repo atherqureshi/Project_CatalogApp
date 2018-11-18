@@ -99,6 +99,7 @@ def gconnect():
                                 'Current user is already connected.'),
                                  200)
         response.headers['Content-Type'] = 'application/json'
+        login_session['user_id'] = getUserID(login_session['email'])
         flash("You are logged in as %s" % login_session['username'])
         return response
 
@@ -269,7 +270,7 @@ def add_item():
             .id
         new_item = Item(name=request.form['name'],
                         description=request.form['description'],
-                        user_id=login_session['user_id'],
+                        user_id=getUserID(login_session['email']),
                         category_id=cat_id)
         session.add(new_item)
         session.commit()
@@ -360,5 +361,5 @@ def edit_item(item_name, category_name):
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
-    app.debug = False
+    app.debug = True
     app.run(host='0.0.0.0', port=5000)
